@@ -8,26 +8,23 @@ public class SimpleMerge {
     public static int[] simpleMerge(int[] arr1, int[] arr2) {
         int[] newArr = new int[arr1.length+arr2.length];
         int c=0;
-        //merge the two arrays into a new array
         for(int i=0; i<arr1.length;i++){
-            newArr[c] = arr1[i];
-            c++;
-        }
-        for(int i=0; i<arr2.length; i++){
-            newArr[c]=arr2[i];
-            c++;
-        }
-        //sort the new array using bubbleSort method
-        for(int i =0; i<newArr.length; i++){
-            for(int j=1; j<newArr.length-i; j++){
-                if(newArr[j-1]>newArr[j]) {
-                    int temp = newArr[j - 1];
-                    newArr[j - 1] = newArr[j];
-                    newArr[j] = temp;
-                }
+            if(arr1[i]<arr2[i]){
+                newArr[i]=arr1[i];
             }
+            c=i;
+            if(arr1[i]>arr2[i]){
+                newArr[i]=arr2[i];
+            }
+            c=i;
+            if(arr1[i]<arr2[c]){
+                newArr[i]=arr1[i];
+            }
+            else{
+                newArr[i]=arr2[c];
+            }
+
         }
-        //return the new sorted array
         return newArr;
 
     }
